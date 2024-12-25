@@ -1,26 +1,46 @@
 {
   "name": "email-service-package",
   "version": "1.0.0",
-  "description": "",
+  "description": "A robust email service with multiple provider support and automatic failover",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js"
     }
   },
+  "sideEffects": false,
   "engines": {
     "node": ">=14.16"
   },
-  "main": "index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:ci": "jest --ci --coverage"
+    "test:ci": "jest --ci --coverage",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc --outDir ./dist",
+    "build:cjs": "tsc --module commonjs --outDir ./dist/cjs"
   },
-  "keywords": [],
+  "keywords": [
+    "email",
+    "sendgrid",
+    "mailgun",
+    "email-service",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

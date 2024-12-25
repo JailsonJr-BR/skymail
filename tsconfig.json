@@ -4,6 +4,8 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
@@ -15,5 +17,8 @@
     "src/**/*.ts",
     "src/__tests__/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
