@@ -14,8 +14,11 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +27,7 @@
     "@eslint/js": "^9.17.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
+    "dotenv": "^16.4.7",
     "eslint": "^9.17.0",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
@@ -38,5 +42,8 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.4"
   }
 }
