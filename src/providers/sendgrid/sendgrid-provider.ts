@@ -3,6 +3,7 @@ import { EmailMessage } from "../../core/types/email-message.js";
 import { SendGridConfig } from "./sendgrid-config.js";
 import { Logger } from "../../utils/logger.js";
 import sendgridMail from "@sendgrid/mail";
+import { Client as SendGridClient } from "@sendgrid/client";
 
 /**
  * SendGrid implementation of the email provider
@@ -11,6 +12,7 @@ import sendgridMail from "@sendgrid/mail";
  */
 export class SendGridProvider extends AbstractEmailProvider {
   protected readonly config: SendGridConfig;
+  private readonly client: SendGridClient;
 
   constructor(config: SendGridConfig) {
     super(config);
@@ -21,6 +23,9 @@ export class SendGridProvider extends AbstractEmailProvider {
 
     this.config = config;
     sendgridMail.setApiKey(this.config.apiKey);
+
+    this.client = new SendGridClient();
+    this.client.setApiKey(this.config.apiKey);
   }
 
   protected async sendEmailRequest(message: EmailMessage): Promise<boolean> {
@@ -50,7 +55,21 @@ export class SendGridProvider extends AbstractEmailProvider {
     }
   }
 
+  /**
+   * Checks if SendGrid service is available by making a test API call
+   * @public
+   * @returns {Promise<boolean>} True if service is available
+   */
   public async isAvailable(): Promise<boolean> {
-    return true;
+    try {
+      const [response] = await this.client.request({
+        method: "GET",
+        url: "/v3/scopes",
+      });
+      return response.statusCode === 200;
+    } catch (error) {
+      Logger.error("SendGrid availability check failed:", error);
+      return false;
+    }
   }
 }
