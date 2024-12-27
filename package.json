@@ -64,6 +64,7 @@
     ]
   },
   "dependencies": {
-    "@sendgrid/mail": "^8.1.4"
+    "@sendgrid/mail": "^8.1.4",
+    "mailgun.js": "^10.3.0"
   }
 }
