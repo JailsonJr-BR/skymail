@@ -1,12 +1,11 @@
 {
-  "name": "email-service-package",
-  "version": "1.0.0",
+  "name": "skymail",
+  "version": "0.0.1",
   "description": "A robust email service with multiple provider support and automatic failover",
-  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/cjs/index.js"
     }
   },
@@ -15,7 +14,7 @@
     "node": ">=14.16"
   },
   "main": "./dist/cjs/index.js",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**"
@@ -29,7 +28,8 @@
     "clean": "rm -rf dist",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir ./dist",
-    "build:cjs": "tsc --module commonjs --outDir ./dist/cjs"
+    "build:cjs": "tsc --module commonjs --outDir ./dist/cjs",
+    "docs": "typedoc src/index.ts"
   },
   "keywords": [
     "email",
@@ -41,7 +41,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "",
+  "author": "JailsonJr-BR",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -54,6 +54,8 @@
     "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
     "ts-jest": "^29.2.5",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.3.3",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
   },
