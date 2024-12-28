@@ -2,7 +2,6 @@ import { MailgunProvider } from "../../../providers/mailgun/mailgun-provider";
 import { EmailMessage } from "../../../core/types/email-message";
 import { MailgunConfig } from "../../../providers/mailgun/mailgun-config";
 
-// Mock simples do Mailgun
 const mockSend = jest.fn();
 const mockGet = jest.fn();
 
@@ -24,7 +23,6 @@ describe("MailgunProvider", () => {
   let testMessage: EmailMessage;
 
   beforeEach(() => {
-    // Reset mocks
     jest.clearAllMocks();
 
     defaultConfig = {

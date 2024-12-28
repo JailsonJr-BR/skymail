@@ -20,9 +20,9 @@ export type EmailMessage = {
   text: string;
 
   /**
-   * HTML body of the email
+   * HTML body of the email (optional)
    */
-  html: string;
+  html?: string;
 
   /**
    * Optional CC recipients

@@ -42,7 +42,6 @@ describe("AbstractEmailProvider", () => {
       from: "sender@example.com",
       subject: "Test Email",
       text: "Hello World",
-      html: "<p>Hello World</p>",
     };
   });
 
@@ -81,7 +80,7 @@ describe("AbstractEmailProvider", () => {
     } as EmailMessage;
 
     await expect(provider.sendEmail(invalidMessage)).rejects.toThrow(
-      "Missing required fields: subject, text, html",
+      "Missing required fields: subject, text",
     );
   });
 });

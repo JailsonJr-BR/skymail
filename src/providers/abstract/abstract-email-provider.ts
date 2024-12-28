@@ -86,7 +86,6 @@ export abstract class AbstractEmailProvider implements IEmailProvider {
       "from",
       "subject",
       "text",
-      "html",
     ];
     const missingFields = requiredFields.filter((field) => !message[field]);
 
