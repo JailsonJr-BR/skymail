@@ -2,7 +2,6 @@ import { IEmailService } from "../../../core/interfaces/email-service";
 import { IEmailProvider } from "../../../core/interfaces/email-provider";
 import { EmailMessage } from "../../../core/types/email-message";
 
-// Mock provider para testes
 class MockEmailProvider implements IEmailProvider {
   async sendEmail(): Promise<boolean> {
     return true;
@@ -13,7 +12,6 @@ class MockEmailProvider implements IEmailProvider {
   }
 }
 
-// Mock service para testes
 class MockEmailService implements IEmailService {
   async sendEmail(): Promise<boolean> {
     return true;
