@@ -1,0 +1,17 @@
+src/
+coverage/
+.github/
+.git/
+.husky/
+docs/
+**/*.test.ts
+**/*.spec.ts
+jest.config.mjs
+.eslintrc
+eslint.config.mjs
+.eslintignore
+.prettierrc
+tsconfig.json
+.editorconfig
+CONTRIBUTING.md
+typedoc.json
