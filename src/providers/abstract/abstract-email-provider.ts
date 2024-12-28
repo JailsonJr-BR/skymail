@@ -68,13 +68,6 @@ export abstract class AbstractEmailProvider implements IEmailProvider {
   /**
    * Validates all required fields and email addresses in the message
    * @param {EmailMessage} message - The email message to validate
-   * @throws {Error} If required fields are missing
-   * @throws {InvalidEmailError} If any email address is invalid
-   * @private
-   */
-  /**
-   * Validates all required fields and email addresses in the message
-   * @param {EmailMessage} message - The email message to validate
    * @throws {Error} If any required fields are missing
    * @throws {InvalidEmailError} If any email address is invalid
    * @private
